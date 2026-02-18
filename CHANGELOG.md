@@ -2,6 +2,36 @@
 
 All notable changes to AxiomIDE are documented in this file.
 
+## [1.1.0] - 2026-02-18
+
+### Added
+- C# semantic highlighting pipeline powered by LSP semantic tokens:
+  - Full, range, and delta token request support.
+  - Token legend-aware coloring with modifier-sensitive styling.
+  - Editor viewport-aware refresh and debounced updates while typing.
+- Semantic highlighting controls:
+  - `View -> Toggle Semantic Highlighting`.
+  - Command Palette action: `View: Toggle Semantic Highlighting`.
+- C# quick-fix workflow:
+  - `Ctrl+.` invokes LSP code actions popup with keyboard and mouse apply.
+  - Workspace edit execution with resource operation support (`CreateFile`, `RenameFile`, `DeleteFile`).
+- Run/build preflight save pipeline:
+  - Save-all dirty editors before Run, Build, startup actions, and run configuration execution.
+  - Clear run cancellation messaging when save fails.
+
+### Changed
+- Improved completion UX and relevance:
+  - Better ranking and stale-request suppression.
+  - Completion resolve support for richer details/documentation.
+  - Auto-import metadata surfaced in completion docs and rows.
+- Improved semantic rendering style to use subtle tint overlays instead of heavy fills.
+- Persisted semantic highlighting preference in workspace layout and applied it on layout load for open C# editors.
+
+### Fixed
+- Prevented repeated LSP shutdown noise during restart by hardening stop lifecycle behavior.
+- Fixed semantic highlight cleanup when editors close or language services are detached.
+- Ensured `.cs`/`.Designer.cs` edits are flushed to disk before execution paths that build/run project code.
+
 ## [1.0.0] - 2026-02-13
 
 ### Added
