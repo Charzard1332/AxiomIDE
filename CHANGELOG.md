@@ -2,6 +2,56 @@
 
 All notable changes to AxiomIDE are documented in this file.
 
+## [1.2.1] - 2026-02-19
+
+### Added
+- Extension activity-bar contribution support improvements:
+  - Extension-contributed activity entries now appear reliably in the far-left sidebar.
+  - Contributed activity items open dedicated dockable tool windows.
+  - Added icon loading pipeline for contributed activity icons with safe fallback glyph rendering.
+- Version Control productivity upgrades:
+  - Staged/unstaged/untracked/conflict file tree with per-file actions (`Stage`, `Unstage`, `Discard`, `Open Diff`).
+  - Inline diff preview pane that updates live when selecting a file in the changes tree.
+  - Commit Composer panel with:
+    - Required commit message validation.
+    - `Amend` and `Sign-off` toggles.
+    - `Commit Staged` and `Commit + Push` actions.
+    - Collapsible `Show/Hide` behavior for more vertical workspace.
+- Git status decorations in explorer and editor tabs:
+  - File-level status badges/colors in project tree.
+  - Open-tab status badges/icons with dirty-state integration.
+- Floating Version Control window workflow:
+  - Large undocked VCS window for full-screen style review/commit work.
+  - `Dock Back` action in floating header.
+  - Stable dock/undock behavior for left-side tool windows.
+- JavaScript language support
+  - NodeJS project creation
+  - TypeScript language support using `typescript-language-server`
+
+### Changed
+- Extensions panel marketplace layout reworked for usability:
+  - Replaced cramped marketplace column layout with split-pane based sizing.
+  - Increased visible space for marketplace result list and package details/docs.
+  - Improved default divider sizing so marketplace content is readable on open.
+- Version Control panel layout reworked for usability:
+  - Changes tree promoted as primary area.
+  - Repo section made collapsible (`Show Repos` / `Hide Repos`).
+  - Commit composer and summary sections rebalanced to avoid cramped rendering.
+- VCS summary refresh behavior improved:
+  - Preserves manual scroll position during live auto-refresh.
+  - Stops forced scroll jumps while reviewing output/history.
+- IntelliSense trigger behavior tuned for responsiveness:
+  - Auto-complete now only opens in meaningful contexts (member access or identifier prefix length >= 2).
+  - Removed noisy auto-trigger patterns that opened suggestions unexpectedly.
+  - Reduced completion request churn via trigger filtering and debounce adjustments.
+
+### Fixed
+- Marketplace VSIX installation now handles HTTP redirects (`301`, `302`, `303`, `307`, `308`) instead of failing on redirect responses.
+- Fixed extension activity fallback icon rendering by adding missing glyph icon implementation used by rail buttons.
+- Fixed multiple Version Control UI overlap/collapse issues in constrained layouts and floating mode.
+- Fixed stale/incorrect VCS status visuals by clearing/repainting status maps in no-project/no-repo/refresh-failure states.
+- Reduced autocomplete lag caused by over-eager silent completion triggering.
+
 ## [1.1.0] - 2026-02-18
 
 ### Added
